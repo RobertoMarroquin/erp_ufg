@@ -149,4 +149,3 @@
 
 ---
 
-Este esquema permite una organización modular de las tablas, facilitando su comprensión y administración. Si necesitas algún ajuste o detalle adicional, házmelo saber.
