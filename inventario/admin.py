@@ -32,13 +32,23 @@ class TransaccionAdmin(admin.ModelAdmin):
     autocomplete_fields = ('producto',)
 
 
-# Now register the remaining models using the decorator as well
+class DetalleCompraInline(admin.TabularInline):
+    model = DetalleCompra
+    extra = 1
+    max_num = 10
+    fields = ('producto',"cantidad","precio_unitario","subtotal")
+    readonly_fields = ('precio_unitario','subtotal',)
+    can_delete = True
+
+
 @admin.register(Compra)
 class CompraAdmin(admin.ModelAdmin):
-    list_display = ('fecha_compra', 'total_compra')
-    search_fields = ('fecha_compra',)
+    inlines = [DetalleCompraInline]
+    list_display = ("id",'proveedor','fecha_compra', 'total_compra')
+    search_fields = ('fecha_compra',"proveedor__nombre")
+    autocomplete_fields = ["proveedor"]
+    readonly_fields = ('total_compra',)
 
-    pass  # Placeholder until fields are defined
 
 
 @admin.register(DetalleCompra)

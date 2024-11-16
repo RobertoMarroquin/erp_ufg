@@ -8,7 +8,15 @@ class Compra(models.Model):
     fecha_compra = models.DateField()
     # Total de la compra
     total_compra = models.DecimalField(max_digits=10, decimal_places=2)
+    # Provedor de Compra 
+    proveedor = models.ForeignKey('Proveedor', on_delete=models.PROTECT, related_name='compras')
 
+    class Meta:
+        verbose_name = "Compra"
+        verbose_name_plural = "Compras"
+        ordering = ['-fecha_compra']
+
+    
     def __str__(self):
         # Representación en string del objeto Compra.  Usar f-strings para mejor legibilidad
         return f"Compra - {self.fecha_compra} - {self.total_compra}"  # Corregido: usar los nombres de campo correctos
