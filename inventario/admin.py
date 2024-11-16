@@ -59,6 +59,7 @@ class DetalleCompraAdmin(admin.ModelAdmin):
 
 @admin.register(Proveedor)
 class ProveedorAdmin(admin.ModelAdmin):
-    # Define fields to display, search, filter, etc. as needed
-    pass # Placeholder until fields are defined
+    search_fields = ["nombre"]
+    list_display = ["id", "nombre","correo"]
+    
 
