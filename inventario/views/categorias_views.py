@@ -1,10 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-<<<<<<< HEAD
 from inventario.models import Categoria
-=======
-from .models import Categoria
->>>>>>> 9fb6699 (creacion de vistas para modelo de productos)
 
 # Lista de Categorías
 class CategoriaListView(ListView):
