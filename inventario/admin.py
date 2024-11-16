@@ -50,11 +50,13 @@ class CompraAdmin(admin.ModelAdmin):
     readonly_fields = ('total_compra',)
 
 
-
 @admin.register(DetalleCompra)
 class DetalleCompraAdmin(admin.ModelAdmin):
-    # Define fields to display, search, filter, etc. as needed
-    pass # Placeholder until fields are defined
+    list_display = ('compra', 'producto', 'cantidad', 'precio_unitario', 'subtotal')
+    search_fields = ('producto__nombre', 'compra__id')  # Search by product name or compra ID
+    list_filter = ('compra', 'producto')
+    autocomplete_fields = ('compra', 'producto')
+    readonly_fields = ('subtotal',)  # Ensure subtotal is calculated, not entered
 
 
 @admin.register(Proveedor)
