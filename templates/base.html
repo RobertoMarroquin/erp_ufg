@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+    {% block head %}
+    <!-- Puedes añadir estilos o scripts específicos aquí -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        {% block navbar %}
+        <!-- Contenido de la barra de navegación -->
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/about/">Acerca de</a></li>
+            <li><a href="/contact/">Contacto</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        <!-- Aquí se insertará el contenido específico de cada página -->
+        {% endblock %}
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        {% block footer %}
+        <p>&copy; 2024 Mi Proyecto Django. Todos los derechos reservados.</p>
+        {% endblock %}
+    </footer>
+</body>
+</html>
