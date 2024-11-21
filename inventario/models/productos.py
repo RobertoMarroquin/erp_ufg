@@ -35,7 +35,7 @@ class Producto(models.Model):
     # Metadatos del modelo Producto.
     class Meta:
         verbose_name = "Producto"
-        verbose_name_plural = "Productos"
+        verbose_name_plural = "Producto"
         ordering = ['nombre']
 
     # Método para calcular el precio de venta del producto.
