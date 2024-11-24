@@ -5,8 +5,8 @@ from inventario.models import Categoria
 # Lista de Categorías
 class CategoriaListView(ListView):
     model = Categoria
-    template_name = 'categoria_list.html'  # Cambiar por el nombre del template
-    context_object_name = 'categorias'     # Nombre del contexto a usar en el template
+    template_name = 'inventario/categorias/CategoriaListViewTemplate.html'  # Nombre completo de la plantilla
+    context_object_name = 'categorias'
 
 # Crear una nueva Categoría
 class CategoriaCreateView(CreateView):

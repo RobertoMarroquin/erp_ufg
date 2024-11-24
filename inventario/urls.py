@@ -26,7 +26,7 @@ from inventario.views import (
 
 
 urlpatterns = [
-    path('categorias/', CategoriaListView.as_view(), name='categoria_list'),
+    path('categorias/', CategoriaListView.as_view(), name='CategoriaListViewTemplate', ),
     path('categorias/crear/', CategoriaCreateView.as_view(), name='categoria_create'),
     path('categorias/<int:pk>/editar/', CategoriaUpdateView.as_view(), name='categoria_update'),
     path('categorias/<int:pk>/eliminar/', CategoriaDeleteView.as_view(), name='categoria_delete'),
