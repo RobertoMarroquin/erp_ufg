@@ -1,5 +1,6 @@
 from django import forms
-from .models import Compra, DetalleCompra, Producto
+from django.forms.models import inlineformset_factory
+from inventario.models import Compra, DetalleCompra, Producto
 
 
 class CompraForm(forms.ModelForm):
@@ -14,32 +15,24 @@ class CompraForm(forms.ModelForm):
 class DetalleCompraForm(forms.ModelForm):
     class Meta:
         model = DetalleCompra
-        fields = ['producto', 'cantidad', 'precio_unitario']
+        fields = ['producto', 'cantidad', 'precio_unitario']  # Define explícitamente los campos
         widgets = {
-            'producto': forms.Select(attrs={'class': 'form-control'}),  # Un ejemplo de widget
-            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),  # Otro ejemplo
+            'producto': forms.Select(attrs={'class': 'form-control'}),
+            'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
             'precio_unitario': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Lógica para modificar el queryset de productos (opcional)
-        # self.fields['producto'].queryset = Producto.objects.filter(  # ... alguna condición ...)
+        # Lógica opcional para el queryset de producto
+        self.fields['producto'].queryset = Producto.objects.all()
 
 
-#Si prefieres usar forms.Form para el DetalleCompra podrías hacer algo como esto:
-class DetalleCompraFormsetHelper(forms.Form):
-    producto = forms.ModelChoiceField(queryset=Producto.objects.all())
-    cantidad = forms.IntegerField(min_value=1) #Asegurar un valor mínimo de 1
-    precio_unitario = forms.DecimalField(decimal_places=2)
-
-# Formset para DetalleCompra (se usa en las vistas)
-DetalleCompraFormSet = forms.inlineformset_factory(
-    Compra,
-    DetalleCompra,
-    form=DetalleCompraFormsetHelper,  # Usa el formulario que creamos o ModelForm
-    extra=1, # Número de formularios vacíos adicionales para agregar nuevos detalles
-    can_delete=True, # Habilitar la eliminación de detalles
+# Creación del formset
+DetalleCompraFormSet = inlineformset_factory(
+    parent_model=Compra,
+    model=DetalleCompra,
+    form=DetalleCompraForm,  # Usa el ModelForm correcto
+    extra=1,  # Formularios adicionales vacíos para agregar detalles
+    can_delete=True  # Habilitar eliminación de formularios
 )
-
-

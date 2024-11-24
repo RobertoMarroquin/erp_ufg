@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Transaccion, Producto
+from inventario.models import Transaccion, Producto
 
 class TransaccionListView(ListView):
     model = Transaccion

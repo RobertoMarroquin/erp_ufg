@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cliente, Factura, DetalleFactura
+from ventas.models import Cliente, Factura, DetalleFactura
 from inventario.models import Producto  # Import Producto for autocomplete
 
 class DetalleFacturaInline(admin.TabularInline):

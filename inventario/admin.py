@@ -37,7 +37,7 @@ class DetalleCompraInline(admin.TabularInline):
     extra = 1
     max_num = 10
     fields = ('producto',"cantidad","precio_unitario","subtotal")
-    readonly_fields = ('precio_unitario','subtotal',)
+    readonly_fields = ('subtotal',)
     can_delete = True
 
 

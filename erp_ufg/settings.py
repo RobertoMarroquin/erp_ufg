@@ -25,12 +25,12 @@ SECRET_KEY = 'django-insecure-4^sicowf&39e9e8ywsi6_gihm_2)&30z)-6^vy9+%kih&#czub
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', "0.0.0.0", "127.0.0.1, "]
 
 
 # Application definition
 
-MYAPPS= ['inventario','ventas']
+MYAPPS= ['inventario','ventas', 'personal']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -105,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ar'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/El_Salvador'
 
 USE_I18N = True
 
@@ -123,3 +123,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+ADMIN_SITE_HEADER = "Sitio de Administracion Soluciones Informacticas"
+ADMIN_SITE_TITLE = "SOLIN Admin"

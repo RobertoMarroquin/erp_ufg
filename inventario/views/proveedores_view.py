@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from models import Proveedor, Categoria
+from inventario.models import Proveedor, Categoria
 
 # Lista de Proveedores
 class ProveedorListView(ListView):

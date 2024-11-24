@@ -1,13 +1,14 @@
 from django.db import models
 from .productos import Producto
 from .transacciones import Transaccion
+from django.dispatch import receiver
 
 
 class Compra(models.Model):
     # Fecha de la compra
     fecha_compra = models.DateField()
     # Total de la compra
-    total_compra = models.DecimalField(max_digits=10, decimal_places=2)
+    total_compra = models.DecimalField(max_digits=10, decimal_places=2,default=0.00)
     # Provedor de Compra 
     proveedor = models.ForeignKey('Proveedor', on_delete=models.PROTECT, related_name='compras')
 
@@ -34,7 +35,7 @@ class DetalleCompra(models.Model):
     # Precio unitario del producto al momento de la compra.
     precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
     # Subtotal del detalle de la compra (cantidad * precio_unitario).
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2,default=0.00)
 
     def __str__(self):
         # Representación en string del objeto DetalleCompra. Usar f-strings
